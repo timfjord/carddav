@@ -4,7 +4,7 @@
 
 Ruby implementation for CardDAV protocol.
 
-It supports only getting cards right now.
+For now you can only get cards.
 
 ## Installation
 
@@ -39,7 +39,7 @@ service = Carddav.service :apple, 'email@icloud.com', 'password'
 service.cards
 ```
 
-Under the hood it uses `Carddav::Client`. It uses standart approach of getting data
+Under the hood it uses `Carddav::Client`, which uses standard approach of getting data
 from CardDAV servers.
 
 ```ruby
@@ -49,7 +49,7 @@ client.cards
 
 ## Discovery process
 
-`Carddav::Client` discovers urls steps by step and than finally tried to get data from `addressbook_url`
+`Carddav::Client` discovers urls step by step and than finally try to get data from `addressbook_url`
 and than parse vcards from response.
 
 Here are all steps:
@@ -59,8 +59,8 @@ Here are all steps:
 * getting addressbook url
 * getting cards
 
-Sometimes some of the url are static so it can be passed to the client.
-This was we bypass some steps in the discovery process
+When one of the url is static it can be passed to the client directly.
+This way we will bypass some steps in the discovery process
 
 ```ruby
 client = Carddav.client.new 'http://my-carddav-server.org', 'email@mail.net', 'password'

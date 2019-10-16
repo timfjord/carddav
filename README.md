@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/timsly/carddav.svg?branch=master)](https://travis-ci.org/timsly/carddav)
 
-Ruby implementation for CardDAV protocol.
+Ruby implementation for the CardDAV protocol.
 
 For now you can only get cards.
 
@@ -24,48 +24,48 @@ Or install it yourself as:
 
 ## Usage
 
-Gem was tested with two providers: iCloud and gmx.
-To get contacts from them you need to do following:
+The gem was tested with two providers: `iCloud` and `gmx`.
+To get contacts from these two providers do the following:
 
 ```ruby
-service = Carddav.service :gmx, 'email@gmx.net', 'password'
+service = Carddav.service(:gmx, 'email@gmx.net', 'password')
 service.cards
 ```
 
 or
 
 ```ruby
-service = Carddav.service :apple, 'email@icloud.com', 'password'
+service = Carddav.service(:apple, 'email@icloud.com', 'password')
 service.cards
 ```
 
-Under the hood it uses `Carddav::Client`, which uses standard approach of getting data
+Under the hood it uses `Carddav::Client`, which uses the standard approach of getting data
 from CardDAV servers.
 
 ```ruby
-client = Carddav::Client.new 'http://my-carddav-server.org', 'email@mail.net', 'password'
+client = Carddav::Client.new('http://my-carddav-server.org', 'email@mail.net', 'password')
 client.cards
 ```
 
 ## Discovery process
 
-`Carddav::Client` discovers urls step by step and than finally try to get data from `addressbook_url`
-and than parse vcards from response.
+`Carddav::Client` discovers urls step by step and then, as the last step, gets data from `addressbook_url`
+and then parses vcards from the response.
 
 Here are all steps:
 
-* getting current_user_principal url
-* getting addressbook_home_set url
-* getting addressbook url
+* getting `current_user_principal` url
+* getting `addressbook_home_set` url
+* getting `addressbook` url
 * getting cards
 
-When one of the url is static it can be passed to the client directly.
-This way we will bypass some steps in the discovery process
+When one of the urls is static it can be passed to the client directly.
+This way some steps in the discovery process will be bypassed
 
 ```ruby
-client = Carddav::Client.new 'http://my-carddav-server.org', 'email@mail.net', 'password'
-client.addressbook_url = '/addressbook-url'
-client.cards # will use http://my-carddav-server.org/addressbook-url and get cards from there.
+client = Carddav::Client.new('http://my-carddav-server.org', 'email@mail.net', 'password')
+client.addressbook_url = '/my-addressbook-url'
+client.cards # http://my-carddav-server.org/my-addressbook-url will be used and cards will be fetched from it.
 ```
 
 ## Development

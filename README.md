@@ -43,7 +43,7 @@ Under the hood it uses `Carddav::Client`, which uses standard approach of gettin
 from CardDAV servers.
 
 ```ruby
-client = Carddav.client.new 'http://my-carddav-server.org', 'email@mail.net', 'password'
+client = Carddav::Client.new 'http://my-carddav-server.org', 'email@mail.net', 'password'
 client.cards
 ```
 
@@ -63,7 +63,7 @@ When one of the url is static it can be passed to the client directly.
 This way we will bypass some steps in the discovery process
 
 ```ruby
-client = Carddav.client.new 'http://my-carddav-server.org', 'email@mail.net', 'password'
+client = Carddav::Client.new 'http://my-carddav-server.org', 'email@mail.net', 'password'
 client.addressbook_url = '/addressbook-url'
 client.cards # will use http://my-carddav-server.org/addressbook-url and get cards from there.
 ```

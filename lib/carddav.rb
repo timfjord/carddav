@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'curb'
 require 'nokogiri'
 require 'vcardigan'

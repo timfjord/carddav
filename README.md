@@ -1,3 +1,5 @@
+[![Stand With Ukraine](https://raw.githubusercontent.com/vshymanskyy/StandWithUkraine/main/banner2-direct.svg)](https://stand-with-ukraine.pp.ua)
+
 # Carddav
 
 [![Build Status](https://travis-ci.org/timsly/carddav.svg?branch=master)](https://travis-ci.org/timsly/carddav)
